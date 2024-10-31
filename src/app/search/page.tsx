@@ -6,6 +6,7 @@ import useSearchStore from '../../stores/useSearchStore';
 import styles from './SearchPage.module.scss';
 import MoviesList from '../MovieList';
 import { fetchSearchedMovies } from '../../utils/fetch';
+import useDebounce from '../../utils/useDebounce';
 /* Types */
 import { TMovie } from '../../types/movieTypes';
 
@@ -16,6 +17,7 @@ export default function SearchPage() {
   const [sortOrder, setSortOrder] = useState('latest');
   const router = useRouter();
   const searchParams = useSearchParams();
+  const debouncedSearchQuery = useDebounce(searchQuery, 500);
 
   useEffect(() => {
     const query = searchParams.get('query');
@@ -26,7 +28,8 @@ export default function SearchPage() {
 
   useEffect(() => {
     const loadMovies = async () => {
-      if (!searchQuery) {
+      if (!debouncedSearchQuery) {
+        //  Empty movies when search query is empty
         setMovies([]);
         router.push('/search');
         return;
@@ -34,7 +37,7 @@ export default function SearchPage() {
 
       setLoading(true);
       try {
-        const fetchedMovies = await fetchSearchedMovies(searchQuery);
+        const fetchedMovies = await fetchSearchedMovies(debouncedSearchQuery);
         setMovies(fetchedMovies);
       } catch (error) {
         console.error('Error fetching searched movies:', error);
@@ -44,12 +47,12 @@ export default function SearchPage() {
       }
     };
 
-    if (searchQuery) {
-      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+    if (debouncedSearchQuery) {
+      router.push(`/search?query=${encodeURIComponent(debouncedSearchQuery)}`);
     }
 
     loadMovies();
-  }, [searchQuery, router]);
+  }, [debouncedSearchQuery, router]);
 
   /* Sorting movies func */
   const sortedMovies = () => {
@@ -76,7 +79,7 @@ export default function SearchPage() {
         className={styles.searchInput}
       />
 
-      {/* Sorting block */}
+      {/* Sorting block  */}
       <div className={styles.sortContainer}>
         <label htmlFor="sortOrder">Sort by Release Date:</label>
         <select
