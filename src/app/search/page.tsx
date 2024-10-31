@@ -26,7 +26,12 @@ export default function SearchPage() {
 
   useEffect(() => {
     const loadMovies = async () => {
-      if (!searchQuery) return;
+      if (!searchQuery) {
+        setMovies([]);
+        router.push('/search');
+        return;
+      }
+
       setLoading(true);
       try {
         const fetchedMovies = await fetchSearchedMovies(searchQuery);
