@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import useSearchStore from '../../stores/useSearchStore';
 import styles from './SearchPage.module.scss';
 import MoviesList from '../MovieList';
@@ -13,6 +14,15 @@ export default function SearchPage() {
   const [movies, setMovies] = useState<TMovie[]>([]);
   const [loading, setLoading] = useState(false);
   const [sortOrder, setSortOrder] = useState('latest');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const query = searchParams.get('query');
+    if (query) {
+      setSearchQuery(query);
+    }
+  }, [searchParams, setSearchQuery]);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -22,15 +32,19 @@ export default function SearchPage() {
         const fetchedMovies = await fetchSearchedMovies(searchQuery);
         setMovies(fetchedMovies);
       } catch (error) {
-        console.error('Error fetching searched moviessss:', error);
+        console.error('Error fetching searched movies:', error);
         setMovies([]);
       } finally {
         setLoading(false);
       }
     };
 
+    if (searchQuery) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
+
     loadMovies();
-  }, [searchQuery]);
+  }, [searchQuery, router]);
 
   /* Sorting movies func */
   const sortedMovies = () => {
