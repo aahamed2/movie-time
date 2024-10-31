@@ -1,0 +1,22 @@
+.searchPage {
+  text-align: center;
+}
+
+.searchInput {
+  margin: 20px auto;
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+}
+
+.movieGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.movieCard {
+  width: 150px;
+  text-align: center;
+}
