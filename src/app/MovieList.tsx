@@ -1,33 +1,63 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './MovieList.module.scss';
+import useFavoritesStore from '../stores/favoritesStore';
+import fallBackPoster from '../../public/logo.jpg';
 
 /* Types */
-import { TMoviesListProps } from '../../src/types/movieTypes';
+import { TMovie, TMoviesListProps } from '../types/movieTypes';
 
 export default function MoviesList({ movies }: TMoviesListProps) {
-  const PLACEHOLDER_IMAGE = '/logo.png';
+  const { toggleFavorite, favorites } = useFavoritesStore();
+
+  const handleFavoriteClick = (movie: TMovie) => {
+    toggleFavorite(movie);
+  };
+
+  console.log('movies in lsit', movies);
 
   return (
     <div className={styles.movies}>
       <div className={styles.movieGrid}>
-        {movies.map((movie) => (
-          <div key={movie.id} className={styles.movieCard}>
-            <Image
-              src={
-                movie.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : PLACEHOLDER_IMAGE
-              }
-              alt={movie.title}
-              width={150}
-              height={220}
-              className={styles.movieImage}
-            />
-            <h2 className={styles.movieTitle}>{movie.title}</h2>
-            <p className={styles.releaseDate}>{movie.release_date}</p>
-            <p className={styles.rating}>Rating: {movie.vote_average}</p>
-          </div>
-        ))}
+        {movies.map((movie) => {
+          const isFavorite = favorites.some((fav) => fav.id === movie.id);
+          const isPosterExists = !!movie.poster_path;
+
+          return (
+            <div key={movie.id} className={styles.movieCard}>
+              <Image
+                src={
+                  isPosterExists
+                    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : fallBackPoster
+                }
+                alt={movie.title}
+                width={150}
+                height={220}
+                className={styles.movieImage}
+              />
+              <h2 className={styles.movieTitle}>{movie.title}</h2>
+              <p className={styles.releaseDate}>
+                {movie.release_date
+                  ? new Date(movie.release_date).getFullYear()
+                  : 'N/A'}
+              </p>
+              <div className={styles.rating}>
+                <span className={styles.voteAverage}>{movie.vote_average}</span>
+                <span className={styles.voteCount}>
+                  {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
+                </span>
+              </div>
+              <button
+                className={styles.favoriteButton}
+                onClick={() => handleFavoriteClick(movie)}
+              >
+                {isFavorite ? 'Remove fave x' : 'Add to fave + '}
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

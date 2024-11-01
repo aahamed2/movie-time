@@ -110,7 +110,6 @@
     grid-template-columns: 1fr;
   }
 }
-
 .movieCard {
   background-color: #fff;
   border-radius: 8px;
@@ -124,6 +123,8 @@
 
   .movieImage {
     border-bottom: 1px solid #ccc;
+    width: 60%;
+    height: auto;
   }
 
   .movieTitle {
@@ -135,20 +136,35 @@
   .releaseDate {
     font-size: 14px;
     color: #777;
+    margin: 5px 0;
   }
 
   .rating {
+    display: flex;
+    align-items: center;
     font-size: 14px;
     color: #ff9800;
+
+    .voteAverage {
+      font-size: 16px;
+      color: #ff9800;
+    }
+
+    .voteCount {
+      font-size: 14px;
+      color: #333;
+    }
   }
 
   .favoriteButton {
     background: none;
-    border: none;
-    font-size: 24px;
+    border: 1px solid #ff9800;
+    border-radius: 10px;
+    font-size: 10px;
+    margin: 10px 0;
     cursor: pointer;
     color: #ff9800;
-    margin: 10px 0;
+    align-items: center;
 
     &:hover {
       color: #e68a00;
