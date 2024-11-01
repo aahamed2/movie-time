@@ -1,4 +1,4 @@
-const API_KEY = 'ced8d676be5b96c77e9e3053a76d2658';
+const API_KEY = process.env.PUBLIC_MOVIES_API_KEY;
 
 export async function fetchMovies() {
   const response = await fetch(
