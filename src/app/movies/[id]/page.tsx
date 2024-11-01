@@ -4,7 +4,7 @@ import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
 
 export default async function MovieDetails({ params }) {
-  const { id } = params;
+  const { id } = await params;
   const movieDetails = await fetchMovieDetails(id);
   const isPosterExists = !!movieDetails.poster_path;
 
