@@ -1,8 +1,13 @@
 import { create } from 'zustand';
 
-const useSearchStore = create((set) => ({
+export type TSearchStore = {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+};
+
+const useSearchStore = create<TSearchStore>((set) => ({
   searchQuery: '',
-  setSearchQuery: (query) => set({ searchQuery: query }),
+  setSearchQuery: (query: string) => set({ searchQuery: query }),
 }));
 
 export default useSearchStore;
