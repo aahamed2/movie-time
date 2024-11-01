@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import useSearchStore from '../../stores/useSearchStore';
 import styles from './SearchPage.module.scss';
 import MoviesList from '../MovieList';
 import { fetchSearchedMovies } from '../../utils/fetch';
@@ -11,8 +10,7 @@ import useDebounce from '../../utils/useDebounce';
 import { TMovie } from '../../types/movieTypes';
 
 export default function SearchPage() {
-  const searchQuery = useSearchStore((state) => state.searchQuery);
-  const setSearchQuery = useSearchStore((state) => state.setSearchQuery);
+  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState<TMovie[]>([]);
   const [loading, setLoading] = useState(false);
   const [sortOrder, setSortOrder] = useState('latest');
@@ -25,7 +23,7 @@ export default function SearchPage() {
     if (query) {
       setSearchQuery(query);
     }
-  }, [searchParams, setSearchQuery]);
+  }, [searchParams]);
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -69,8 +67,6 @@ export default function SearchPage() {
     });
   };
 
-  console.log('movies in search', movies);
-  console.log('movies in search searchQuery', searchQuery);
   return (
     <div className={styles.searchPage}>
       <h1>Search Movies</h1>
@@ -82,7 +78,7 @@ export default function SearchPage() {
         className={styles.searchInput}
       />
 
-      {/* Sorting block  */}
+      {/* Sorting block */}
       <div className={styles.sortContainer}>
         <label htmlFor="sortOrder">Sort by Release Date:</label>
         <select
