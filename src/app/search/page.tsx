@@ -11,7 +11,8 @@ import useDebounce from '../../utils/useDebounce';
 import { TMovie } from '../../types/movieTypes';
 
 export default function SearchPage() {
-  const { searchQuery, setSearchQuery } = useSearchStore();
+  const searchQuery = useSearchStore((state) => state.searchQuery);
+  const setSearchQuery = useSearchStore((state) => state.setSearchQuery);
   const [movies, setMovies] = useState<TMovie[]>([]);
   const [loading, setLoading] = useState(false);
   const [sortOrder, setSortOrder] = useState('latest');
@@ -68,6 +69,8 @@ export default function SearchPage() {
     });
   };
 
+  console.log('movies in search', movies);
+  console.log('movies in search searchQuery', searchQuery);
   return (
     <div className={styles.searchPage}>
       <h1>Search Movies</h1>
