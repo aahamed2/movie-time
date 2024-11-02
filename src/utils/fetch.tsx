@@ -42,3 +42,17 @@ export async function fetchMovieDetails(movieId: number) {
   const data = await response.json();
   return data; // Return the movie details object
 }
+
+// Fetch similar movies based on the movie ID
+export async function fetchSimilarMovies(movieId: number) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}`
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch similar movies');
+  }
+
+  const data = await response.json();
+  return data.results || [];
+}
