@@ -9,7 +9,7 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 /* Types */
 import { TMovie, TMoviesListProps } from '../../types/movieTypes';
 
-export default function MoviesList({ movies }: TMoviesListProps) {
+const MoviesList: React.FC<TMoviesListProps> = ({ movies }) => {
   const { toggleFavorite, favorites } = useFavoritesStore();
 
   const handleFavoriteClick = (movie: TMovie) => {
@@ -55,7 +55,6 @@ export default function MoviesList({ movies }: TMoviesListProps) {
                 </div>
               </Link>
 
-              {/* Favorite button with heart icon */}
               <button
                 className={styles.favoriteButton}
                 onClick={() => handleFavoriteClick(movie)}
@@ -75,4 +74,6 @@ export default function MoviesList({ movies }: TMoviesListProps) {
       </div>
     </div>
   );
-}
+};
+
+export default MoviesList;

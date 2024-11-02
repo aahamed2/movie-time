@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 import { MdOutlineMovieFilter } from 'react-icons/md';
 import SearchBar from '../searchBar/SearchBar';
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
     <header className={styles.headerWrapper}>
       {/* left block */}
@@ -28,4 +28,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

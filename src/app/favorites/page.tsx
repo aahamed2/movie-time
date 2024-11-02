@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react';
 import useFavoritesStore from '../../stores/favoritesStore';
 import MoviesList from '../../components/movieList/MovieList';
+import { TMovie } from '../../types/movieTypes';
 import styles from './Favorites.module.scss';
 
 export default function Favorites() {
-  const [loading, setLoading] = useState(true);
-  const favorites = useFavoritesStore((state) => state.favorites);
+  const [loading, setLoading] = useState<boolean>(true);
+  const favorites =
+    (useFavoritesStore((state) => state.favorites) as TMovie[]) || [];
 
   useEffect(() => {
     const timeout = setTimeout(() => {

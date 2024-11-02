@@ -4,15 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './SearchBar.module.scss';
 
-interface SearchBarProps {
+export type TSearchBarProps = {
   initialQuery?: string;
-}
+};
 
-export default function SearchBar({ initialQuery = '' }: SearchBarProps) {
-  const [searchQuery, setSearchQuery] = useState(initialQuery);
+const SearchBar: React.FC<TSearchBarProps> = ({ initialQuery = '' }) => {
+  const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const router = useRouter();
 
-  const handleSearch = (event: React.FormEvent) => {
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
@@ -33,4 +33,6 @@ export default function SearchBar({ initialQuery = '' }: SearchBarProps) {
       </button>
     </form>
   );
-}
+};
+
+export default SearchBar;
