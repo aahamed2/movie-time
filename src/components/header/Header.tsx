@@ -12,9 +12,9 @@ function Header() {
         <Link href="/favorites" className={styles.link}>
           Favorites
         </Link>
-        <Link href="/search" className={styles.link}>
+        {/* <Link href="/search" className={styles.link}>
           Search me
-        </Link>
+        </Link> */}
       </nav>
     </header>
   );

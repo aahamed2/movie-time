@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import useFavoritesStore from '../../stores/favoritesStore';
-import MoviesList from '../MovieList';
+import MoviesList from '../../components/movieList/MovieList';
 import styles from './Favorites.module.scss';
 
 export default function Favorites() {

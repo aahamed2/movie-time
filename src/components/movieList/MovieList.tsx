@@ -2,11 +2,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './MovieList.module.scss';
-import useFavoritesStore from '../stores/favoritesStore';
-import fallBackPoster from '../../public/logo.jpg';
+import useFavoritesStore from '../../stores/favoritesStore';
+import fallBackPoster from '../../../public/logo.jpg';
 
 /* Types */
-import { TMovie, TMoviesListProps } from '../types/movieTypes';
+import { TMovie, TMoviesListProps } from '../../types/movieTypes';
 
 export default function MoviesList({ movies }: TMoviesListProps) {
   const { toggleFavorite, favorites } = useFavoritesStore();
