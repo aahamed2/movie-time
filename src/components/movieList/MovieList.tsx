@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './MovieList.module.scss';
 import useFavoritesStore from '../../stores/favoritesStore';
 import fallBackPoster from '../../../public/logo.jpg';
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 
 /* Types */
 import { TMovie, TMoviesListProps } from '../../types/movieTypes';
@@ -54,12 +55,19 @@ export default function MoviesList({ movies }: TMoviesListProps) {
                 </div>
               </Link>
 
-              {/* fave button */}
+              {/* Favorite button with heart icon */}
               <button
                 className={styles.favoriteButton}
                 onClick={() => handleFavoriteClick(movie)}
+                aria-label={
+                  isFavorite ? 'Remove from favorites' : 'Add to favorites'
+                }
               >
-                {isFavorite ? 'Remove fave x' : 'Add to fave + '}
+                {isFavorite ? (
+                  <AiFillHeart className={styles.filledHeart} />
+                ) : (
+                  <AiOutlineHeart />
+                )}
               </button>
             </div>
           );

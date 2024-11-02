@@ -2,30 +2,28 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #303640;
+  background-color: #000;
   color: white;
   padding: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1); // Add a light border
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // Adjust shadow for depth
 
   .headerlogo {
     display: flex;
-    align-items: center; // Align icon and text vertically
+    align-items: center;
 
     .headerTexts {
-      display: flex; // Use flex to align items in headerTexts
-      align-items: center; // Center items vertically
+      display: flex;
+      align-items: center;
       font-weight: 600;
       font-size: 1.5rem;
       background-color: #fbbf24;
       color: #000;
       border-radius: 0.4rem;
-      padding: 5px;
+      padding: 0 10px;
       margin: 5px 0;
     }
 
     .headerIcon {
-      margin-right: 8px; // Add space between the icon and text
+      margin-right: 8px;
     }
   }
 
@@ -33,15 +31,17 @@
     gap: 10px;
     display: flex;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #ffffff;
 
     a {
-      // Targeting the links inside headerItems
-      color: inherit; // This will inherit the color from headerItems
+      color: #000;
+      background: #fbbf24;
+      padding: 5px;
+      border-radius: 3px;
 
       &:hover {
-        color: #fbbf24; // Change color on hover
+        background: #d8c184;
       }
     }
   }

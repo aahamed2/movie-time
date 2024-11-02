@@ -1,19 +1,25 @@
 .searchBar {
   display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+  margin: 10px auto;
+  width: 300px;
+  padding-left: 20px;
 }
 
 .searchInput {
   flex: 1;
   padding: 8px;
   font-size: 1rem;
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
 }
 
 .searchButton {
   padding: 8px 12px;
-  background-color: #0070f3;
-  color: white;
+  background-color: #fbbf24;
+  color: #000;
   border: none;
+  font-weight: 700;
   cursor: pointer;
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import MoviesList from '../../components/movieList/MovieList';
 import { TMovie } from '../../types/movieTypes';
 import { sortMovies } from '../../utils/movie';
+import styles from './SearchResults.module.scss';
 
 interface SearchResultsProps {
   movies: TMovie[];
@@ -25,20 +26,32 @@ export default function SearchResults({ movies, query }: SearchResultsProps) {
   const sortedMovies = sortMovies(localMovies, sortOption);
 
   return (
-    <div>
-      <h3>Search Results</h3>
-      <select value={sortOption} onChange={handleSortChange}>
-        <option value="latest">Sort by Latest</option>
-        <option value="oldest">Sort by Oldest</option>
-      </select>
+    <div className={styles.searchResults}>
+      <div className={styles.header}>
+        <h3 className={styles.title}>Search Results</h3>
+        <div className={styles.sortContainer}>
+          <label htmlFor="sort" className={styles.sortLabel}>
+            Sort by:
+          </label>
+          <select
+            id="sort"
+            value={sortOption}
+            onChange={handleSortChange}
+            className={styles.sortDropdown}
+          >
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+      </div>
       {query ? (
         sortedMovies.length > 0 ? (
           <MoviesList movies={sortedMovies} />
         ) : (
-          <p>{`No movies found for - ${query}`}</p>
+          <p className={styles.noResults}>{`No movies found for - ${query}`}</p>
         )
       ) : (
-        <p>Enter a search term to find movies.</p>
+        <p className={styles.noResults}>Enter a search term to find movies.</p>
       )}
     </div>
   );

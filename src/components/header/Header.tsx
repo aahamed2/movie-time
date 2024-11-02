@@ -7,13 +7,13 @@ export default function Header() {
   return (
     <header className={styles.headerWrapper}>
       {/* left block */}
-      <div className={styles.headerlogo}>
+      <Link href="/" className={styles.headerlogo}>
         <MdOutlineMovieFilter
           style={{ fontSize: '30px', color: '#fbbf24' }}
           className={styles.headerIcon}
         />
         <div className={styles.headerTexts}>My Movies</div>
-      </div>
+      </Link>
       {/* right block */}
       <div className={styles.headerItems}>
         <Link href="/" className={styles.link}>
