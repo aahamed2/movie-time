@@ -1,13 +1,17 @@
-import { fetchMovieDetails } from '../../../utils/fetch';
+import { fetchMovieDetails, fetchSimilarMovies } from '../../../utils/fetch';
 import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
+import SimilarMovies from '../similarMovies/page';
 
 export default async function MovieDetails({ params }) {
   const { id } = await params;
   const movieDetails = await fetchMovieDetails(id);
+  const similarMovies = await fetchSimilarMovies(id);
   const isPosterExists = !!movieDetails.poster_path;
   const isBackdropExists = !!movieDetails.backdrop_path;
+
+  console.log('similarMovies', similarMovies);
 
   return (
     <div>
@@ -72,9 +76,10 @@ export default async function MovieDetails({ params }) {
             </div>
           </div>
         </div>
-
-        {/* carousel goes here */}
-        <div className={styles.carousel}> something</div>
+        {/* Carousel Container */}
+      </div>
+      <div>
+        <SimilarMovies movies={similarMovies} />
       </div>
     </div>
   );
