@@ -7,7 +7,7 @@ export default async function MoviesPage() {
 
   return (
     <div className={styles.homePageWrapper}>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className={styles.homePageSnippet}>
         <div className={styles.textOverlay}>
           <h1>Welcome to My Movies</h1>

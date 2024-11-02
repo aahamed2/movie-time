@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 import { MdOutlineMovieFilter } from 'react-icons/md';
+import SearchBar from '../searchBar/SearchBar';
 
 export default function Header() {
   return (
@@ -14,6 +15,8 @@ export default function Header() {
         />
         <div className={styles.headerTexts}>My Movies</div>
       </Link>
+      {/* Search bar */}
+      <SearchBar />
       {/* right block */}
       <div className={styles.headerItems}>
         <Link href="/" className={styles.link}>
