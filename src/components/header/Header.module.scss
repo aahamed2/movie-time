@@ -1,19 +1,32 @@
 .headerWrapper {
   display: flex;
   align-items: center;
-
   justify-content: space-between;
+  background-color: #303640;
+  color: white;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); // Add a light border
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); // Adjust shadow for depth
 
-  .headerLogo {
-    background-color: red;
-  }
+  .headerlogo {
+    display: flex;
+    align-items: center; // Align icon and text vertically
 
-  .headerIcon {
-  }
+    .headerTexts {
+      display: flex; // Use flex to align items in headerTexts
+      align-items: center; // Center items vertically
+      font-weight: 600;
+      font-size: 1.5rem;
+      background-color: #fbbf24;
+      color: #000;
+      border-radius: 0.4rem;
+      padding: 5px;
+      margin: 5px 0;
+    }
 
-  .headerTexts {
-    font-weight: 600;
-    font-size: 1.5rem;
+    .headerIcon {
+      margin-right: 8px; // Add space between the icon and text
+    }
   }
 
   .headerItems {
@@ -21,26 +34,15 @@
     display: flex;
     font-weight: 600;
     font-size: 1rem;
+    color: #ffffff;
+
+    a {
+      // Targeting the links inside headerItems
+      color: inherit; // This will inherit the color from headerItems
+
+      &:hover {
+        color: #fbbf24; // Change color on hover
+      }
+    }
   }
-
-  // nav {
-  //   ul {
-  //     list-style: none;
-  //     padding: 0;
-
-  //     li {
-  //       display: inline;
-  //       margin-right: 1rem;
-
-  //       a {
-  //         text-decoration: none;
-  //         color: #333;
-
-  //         &:hover {
-  //           color: #0070f3;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }
