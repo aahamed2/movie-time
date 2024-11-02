@@ -1,3 +1,8 @@
+.movieDetails {
+  background-color: yellow;
+  height: fit-content;
+}
+
 .imageCover {
   width: fit-content;
   height: auto;
@@ -9,4 +14,9 @@
 .movieContent {
   background-color: #333;
   font-size: 0.9rem;
+
+  > div {
+    background-color: #333;
+    color: white;
+  }
 }

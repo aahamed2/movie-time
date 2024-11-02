@@ -8,6 +8,8 @@ export default async function MovieDetails({ params }) {
   const movieDetails = await fetchMovieDetails(id);
   const isPosterExists = !!movieDetails.poster_path;
 
+  console.log('movieDetails', movieDetails);
+
   return (
     <div className={styles.movieDetails}>
       <div className={styles.imageCover}>
@@ -27,7 +29,23 @@ export default async function MovieDetails({ params }) {
       <div className={styles.movieContent}>
         <h1 className={styles.movieTitle}>{movieDetails.title}</h1>
         <h2 className={styles.tagline}>“{movieDetails.tagline}”</h2>
+
+        {movieDetails.genres.map((genre) => (
+          <div key={genre.id}>{genre.name}</div>
+        ))}
+        <div>{`${movieDetails.vote_average} / 10`} </div>
+        <div>{movieDetails.vote_count} </div>
+        <div>{movieDetails.director} </div>
+        <div>{movieDetails.status} </div>
+        <div>{movieDetails.overview} </div>
+        <div>{movieDetails.runtime} </div>
+        {movieDetails.production_companies.map((companies) => (
+          <div key={companies.id}>{companies.name}</div>
+        ))}
       </div>
     </div>
   );
 }
+
+// about the movie, including s, genre, director, cast,
+// runtime, and ratings.
