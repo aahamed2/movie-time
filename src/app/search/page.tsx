@@ -1,6 +1,7 @@
 import SearchBar from '../../components/searchBar/SearchBar';
 import SearchResults from './SearchResults';
 import { fetchSearchedMovies } from '../../utils/fetch';
+import styles from './SearchPage.module.scss';
 
 export default async function SearchPage({ searchParams }) {
   const initialQuery = (await searchParams)?.query || '';
@@ -17,7 +18,7 @@ export default async function SearchPage({ searchParams }) {
   }
 
   return (
-    <div>
+    <div className={styles.searchPageWrapper}>
       {/* Render the search bar */}
       <SearchBar initialQuery={initialQuery} />
       {/* Render search results */}

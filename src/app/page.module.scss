@@ -1,9 +1,11 @@
-.testing {
-  background-color: palegoldenrod;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  margin: 10px;
-  display: flex;
-  height: 100px;
+.homepageWrapper {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.homePageSnippet {
+  padding: 4rem;
+  background-color: grey;
 }
