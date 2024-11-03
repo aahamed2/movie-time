@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**My Movies Website**
 
-## Getting Started
+My Movies Website is a platform for users to browse a wide variety of movies and manage their favorite selections. The application provides an intuitive interface for searching movies and easily marking them as favorites.
 
-First, run the development server:
+Instructions for Installation and Running Locally
+To run the application locally, follow these steps:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/aahamed2/movie-time.git
+   cd movie-time
+   ```
+2. **Install dependencies:**
+   ```bash
+   bun install
+   ```
+3. **Run the application:**
+   ```bash
+   bun run dev
+   ```
+   The application will be accessible at `http://localhost:3000` in your web browser.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Technologies Used**
+- Next.js 15: For building the application with server-side rendering.
+- Bun: Used as the JavaScript runtime.
+- SCSS: For modular and maintainable styling.
+- Zustand: For global state management, particularly for managing favorite movies.
+- Embla Carousel: For implementing a responsive carousel feature.
+- TypeScript: For static typing, improving code quality and maintainability.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Design Decisions**
+- Search on Home Page: The search bar is integrated on the home page for quick access. Upon entering a query, users are redirected to a results page using `router.push`.
+- Server and Client Components: Utilized Next.js 15's optimized components to improve load times, using server-side rendering for data fetching and client components for interactivity.
+- Dynamic Routing: Each movie detail page has a unique URL for easy bookmarking and sharing.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Challenges and Solutions**
+- Hydration Errors: Resolved dynamic data inconsistencies between server and client components by using conditional rendering and ensuring consistent data availability.
+- Responsive Design: Achieved a visually appealing layout using CSS Modules and SCSS for flexible component styling.
+- Favorite Movies Management: Leveraged Zustand for lightweight state management of favorite movies across components.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Additional Features**
+- Sorting Functionality: Users can sort movies on the search results page by release date (latest to oldest or vice versa), ensuring a responsive experience.
+- Fallback Images: Display fallback images for movies without available posters to maintain layout consistency.
 
-## Learn More
+**Future Enhancements**
+- Pagination: Implementing pagination for large datasets on the search results page for better user experience.
+Feel free to explore the project and contribute! For any questions or feedback, please reach out.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+_Repository_: You can find the project repository [here](https://github.com/aahamed2/movie-time).
