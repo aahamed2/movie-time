@@ -3,11 +3,15 @@ import { fetchMovieDetails, fetchSimilarMovies } from '../../../utils/fetch';
 import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
-import SimilarMovies from '../../similarMovies/page';
+import SimilarMovies from '../../similarMovies/SimilarMovies';
 
-import { TGenre, TMovieDetailsType } from '../../../types/movieTypes';
+import {
+  TGenre,
+  TMovieDetailsType,
+  TLanguage,
+} from '../../../types/movieTypes';
 
-type TMovieDetailsProps = {
+export type TMovieDetailsProps = {
   movieDetails: TMovieDetailsType;
   params: { id: string };
 };
@@ -18,6 +22,8 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
   const similarMovies = await fetchSimilarMovies(id);
   const isPosterExists = !!movieDetails.poster_path;
   const isBackdropExists = !!movieDetails.backdrop_path;
+
+  console.log('MovieDetailsssss', movieDetails);
 
   return (
     <div>
@@ -60,11 +66,12 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
                   .map((genre: TGenre) => genre.name)
                   .join(', ')}
               </div>
+
               <div>
-                <strong>Director:</strong> {movieDetails.director || 'N/A'}
-              </div>
-              <div>
-                <strong>Cast:</strong> {movieDetails.cast?.join(', ') || 'N/A'}
+                <strong>Languages:</strong>{' '}
+                {movieDetails.spoken_languages
+                  .map((language: TLanguage) => language.english_name)
+                  .join(', ')}
               </div>
               <div>
                 <strong>Runtime:</strong> {movieDetails.runtime} mins
@@ -75,6 +82,10 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
               </div>
               <div>
                 <strong>Status:</strong> {movieDetails.status}
+              </div>
+              <div>
+                <strong>Released Data:</strong>{' '}
+                {movieDetails.release_date || 'N/A'}
               </div>
               <div className={styles.productionCompanies}>
                 <strong>Production:</strong>{' '}

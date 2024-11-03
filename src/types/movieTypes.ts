@@ -30,6 +30,11 @@ export type TProductionCompany = {
   name: string;
 };
 
+export type TLanguage = {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+};
 export type TMovieDetailsType = {
   title: string;
   tagline?: string;
@@ -44,4 +49,5 @@ export type TMovieDetailsType = {
   vote_count?: number;
   status?: string;
   production_companies?: TProductionCompany[];
+  spoken_languages?: TLanguage[];
 };

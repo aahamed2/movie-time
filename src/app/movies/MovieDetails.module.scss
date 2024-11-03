@@ -42,6 +42,9 @@
     flex-direction: column;
     gap: 15px;
 
+    strong {
+      color: #fbbf24;
+    }
     @media (max-width: 420px) {
       align-items: center;
       text-align: center;
