@@ -1,4 +1,7 @@
-**My Movies Website**
+<div align="center">
+    <img width="209" alt="Logo" src="https://github.com/user-attachments/assets/1dda4015-3f2e-44fe-823b-5a5293f3a652" />
+   
+</div>
 
 My Movies Website is a platform for users to browse a wide variety of movies and manage their favorite selections. The application provides an intuitive interface for searching movies and easily marking them as favorites.
 
