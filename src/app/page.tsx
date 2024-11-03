@@ -1,4 +1,3 @@
-import SearchBar from '@/components/searchBar/SearchBar';
 import { fetchMovies } from '../utils/fetch';
 import MoviesList from '../components/movieList/MovieList';
 import styles from './page.module.scss';

@@ -1,5 +1,5 @@
 import styles from './MovieList.module.scss';
-import { TMovie, TMoviesListProps } from '../../types/movieTypes';
+import { TMoviesListProps } from '../../types/movieTypes';
 import MovieCard from '../../components/movieCard/MovieCard';
 
 const MoviesList: React.FC<TMoviesListProps> = ({ movies }) => {
