@@ -44,5 +44,3 @@ To run the application locally, follow these steps:
 **Future Enhancements**
 - Pagination: Implementing pagination for large datasets on the search results page for better user experience.
 Feel free to explore the project and contribute! For any questions or feedback, please reach out.
-
-_Repository_: You can find the project repository [here](https://github.com/aahamed2/movie-time).
