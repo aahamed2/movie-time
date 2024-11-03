@@ -1,17 +1,25 @@
+import React from 'react';
 import { fetchMovieDetails, fetchSimilarMovies } from '../../../utils/fetch';
 import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
 import SimilarMovies from '../similarMovies/page';
 
-export default async function MovieDetails({ params }) {
+import { TGenre, TMovieDetailsType } from '../../../types/movieTypes';
+
+type TMovieDetailsProps = {
+  movieDetails: TMovieDetailsType;
+  params: { id: number };
+};
+
+const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
   const { id } = await params;
   const movieDetails = await fetchMovieDetails(id);
   const similarMovies = await fetchSimilarMovies(id);
   const isPosterExists = !!movieDetails.poster_path;
   const isBackdropExists = !!movieDetails.backdrop_path;
 
-  console.log('similarMovies', similarMovies);
+  console.log('movieDetails', movieDetails);
 
   return (
     <div>
@@ -39,6 +47,7 @@ export default async function MovieDetails({ params }) {
               className={styles.movieImage}
             />
           </div>
+          {/* Movie Details */}
           <div className={styles.movieContent}>
             <h1 className={styles.movieTitle}>{movieDetails.title}</h1>
             {movieDetails.tagline && (
@@ -47,40 +56,44 @@ export default async function MovieDetails({ params }) {
             <p className={styles.overview}>{movieDetails.overview}</p>
 
             <div className={styles.details}>
-              <div className={styles.detailItem}>
+              <div>
                 <strong>Genre:</strong>{' '}
-                {movieDetails.genres.map((genre) => genre.name).join(', ')}
+                {movieDetails.genres
+                  .map((genre: TGenre) => genre.name)
+                  .join(', ')}
               </div>
-              <div className={styles.detailItem}>
+              <div>
                 <strong>Director:</strong> {movieDetails.director || 'N/A'}
               </div>
-              <div className={styles.detailItem}>
+              <div>
                 <strong>Cast:</strong> {movieDetails.cast?.join(', ') || 'N/A'}
               </div>
-              <div className={styles.detailItem}>
+              <div>
                 <strong>Runtime:</strong> {movieDetails.runtime} mins
               </div>
-              <div className={styles.detailItem}>
+              <div>
                 <strong>Rating:</strong> {`${movieDetails.vote_average} / 10`} (
                 {movieDetails.vote_count} votes)
               </div>
-              <div className={styles.detailItem}>
+              <div>
                 <strong>Status:</strong> {movieDetails.status}
               </div>
               <div className={styles.productionCompanies}>
                 <strong>Production:</strong>{' '}
                 {movieDetails.production_companies
-                  .map((company) => company.name)
+                  .map((company: { name: string }) => company.name)
                   .join(', ')}
               </div>
             </div>
           </div>
         </div>
-        {/* Carousel Container */}
+        {/* Similar Movies Container */}
       </div>
       <div>
         <SimilarMovies movies={similarMovies} />
       </div>
     </div>
   );
-}
+};
+
+export default MovieDetails;

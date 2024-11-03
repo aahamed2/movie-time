@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useFavoritesStore from '../../stores/favoritesStore';
 import MoviesList from '../../components/movieList/MovieList';
 import { TMovie } from '../../types/movieTypes';
 import styles from './Favorites.module.scss';
 
-export default function Favorites() {
+const Favorites: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const favorites = useFavoritesStore((state) => state.favorites) as TMovie[];
 
@@ -29,9 +29,11 @@ export default function Favorites() {
         <MoviesList movies={favorites} />
       ) : (
         <div className={styles.noFavorites}>
-          No favorite movies found, Browse the site to pick your favorites!
+          No favorite movies found. Browse the site to pick your favorites!
         </div>
       )}
     </div>
   );
-}
+};
+
+export default Favorites;

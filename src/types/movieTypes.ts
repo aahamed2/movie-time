@@ -1,3 +1,5 @@
+// movie listing
+
 export type TMovie = {
   id: number;
   title: string;
@@ -15,6 +17,31 @@ export type TMovie = {
   genre_ids: number[];
 };
 
+// movie details
 export type TMoviesListProps = {
   movies: TMovie[];
+};
+
+export type TGenre = {
+  id: number;
+  name: string;
+};
+export type TProductionCompany = {
+  name: string;
+};
+
+export type TMovieDetailsType = {
+  title: string;
+  tagline?: string;
+  overview: string;
+  poster_path?: string;
+  backdrop_path?: string;
+  genres?: TGenre[];
+  director?: string;
+  cast?: string[];
+  runtime?: number;
+  vote_average?: number;
+  vote_count?: number;
+  status?: string;
+  production_companies?: TProductionCompany[];
 };

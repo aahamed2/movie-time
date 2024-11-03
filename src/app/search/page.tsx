@@ -1,15 +1,19 @@
-import SearchBar from '../../components/searchBar/SearchBar';
+import React from 'react';
 import SearchResults from './SearchResults';
 import { fetchSearchedMovies } from '../../utils/fetch';
-// import styles from './SearchPage.module.scss';
 
-export default async function SearchPage({ searchParams }) {
-  const initialQuery = (await searchParams)?.query || '';
+type SearchPageProps = {
+  searchParams: {
+    query?: string;
+  };
+};
+
+const SearchPage: React.FC<SearchPageProps> = async ({ searchParams }) => {
+  const initialQuery = searchParams?.query || '';
   let movies = [];
 
   if (initialQuery) {
     try {
-      //Fetch movies using the search query
       movies = await fetchSearchedMovies(initialQuery);
     } catch (error) {
       console.log('Error fetching searched movies:', error);
@@ -22,4 +26,6 @@ export default async function SearchPage({ searchParams }) {
       <SearchResults movies={movies} query={initialQuery} />
     </>
   );
-}
+};
+
+export default SearchPage;
