@@ -1,12 +1,35 @@
 .carouselContainer {
-  position: relative;
-  padding: 20px;
+  padding: 16px;
+  background-color: #000;
 }
 
 .title {
-  font-size: 20px;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.emblaContainer {
+  display: flex;
+}
+
+.emblaSlide {
+  position: relative;
+  margin-right: 16px;
+  flex: 0 0 auto;
+}
+
+.moviePoster {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.movieTitle {
+  text-align: center;
+  margin-top: 8px;
   font-weight: bold;
-  color: #fbbf24;
-  margin-bottom: 20px;
-  text-align: left;
 }

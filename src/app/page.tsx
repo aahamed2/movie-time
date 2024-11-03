@@ -7,14 +7,12 @@ export default async function MoviesPage() {
 
   return (
     <div className={styles.homePageWrapper}>
-      {/* <SearchBar /> */}
       <div className={styles.homePageSnippet}>
         <div className={styles.textOverlay}>
           <h1>Welcome to My Movies</h1>
           <p>"Browse through the world of movies! </p>
         </div>
       </div>
-
       <MoviesList movies={movies} />
     </div>
   );
