@@ -11,7 +11,7 @@ export type TSearchResultsProps = {
   query: string;
 };
 
-export default function SearchResults({ movies, query }: TSearchResultsProps) {
+const SearchResults: React.FC<TSearchResultsProps> = ({ movies, query }) => {
   const [localMovies, setLocalMovies] = useState<TMovie[]>(movies);
   const [sortOption, setSortOption] = useState('latest');
 
@@ -55,4 +55,6 @@ export default function SearchResults({ movies, query }: TSearchResultsProps) {
       )}
     </div>
   );
-}
+};
+
+export default SearchResults;

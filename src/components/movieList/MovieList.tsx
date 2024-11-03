@@ -1,16 +1,15 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './MovieList.module.scss';
-import useFavoritesStore from '../../stores/favoritesStore';
 import fallBackPoster from '../../../public/logo.jpg';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-
-/* Types */
+import styles from './MovieList.module.scss';
+import useFavoritesStore from '../../stores/favoritesStore';
 import { TMovie, TMoviesListProps } from '../../types/movieTypes';
 
 const MoviesList: React.FC<TMoviesListProps> = ({ movies }) => {
-  const { toggleFavorite, favorites } = useFavoritesStore();
+  const favorites = useFavoritesStore((state) => state.favorites);
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
 
   const handleFavoriteClick = (movie: TMovie) => {
     toggleFavorite(movie);
@@ -38,36 +37,41 @@ const MoviesList: React.FC<TMoviesListProps> = ({ movies }) => {
                   height={220}
                   className={styles.movieImage}
                 />
-                {/* Movie details */}
-                <h2 className={styles.movieTitle}>{movie.title}</h2>
-                <p className={styles.releaseDate}>
-                  {movie.release_date
-                    ? new Date(movie.release_date).getFullYear()
-                    : 'N/A'}
-                </p>
-                <div className={styles.rating}>
-                  <span className={styles.voteAverage}>
-                    {movie.vote_average}
-                  </span>
-                  <span className={styles.voteCount}>
-                    {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
-                  </span>
-                </div>
               </Link>
-
-              <button
-                className={styles.favoriteButton}
-                onClick={() => handleFavoriteClick(movie)}
-                aria-label={
-                  isFavorite ? 'Remove from favorites' : 'Add to favorites'
-                }
-              >
-                {isFavorite ? (
-                  <AiFillHeart className={styles.filledHeart} />
-                ) : (
-                  <AiOutlineHeart />
-                )}
-              </button>
+              <div className={styles.infoRow}>
+                <button
+                  className={styles.favoriteButton}
+                  onClick={() => handleFavoriteClick(movie)}
+                  aria-label={
+                    isFavorite ? 'Remove from favorites' : 'Add to favorites'
+                  }
+                >
+                  {isFavorite ? (
+                    <AiFillHeart className={styles.filledHeart} />
+                  ) : (
+                    <AiOutlineHeart />
+                  )}
+                </button>
+                <Link
+                  href={`/movies/${movie.id}`}
+                  className={styles.movieTitle}
+                >
+                  {movie.title}
+                </Link>
+                <span className={styles.releaseDate}>
+                  {movie.release_date
+                    ? `(${new Date(movie.release_date).getFullYear()})`
+                    : 'N/A'}
+                </span>
+              </div>
+              <div className={styles.rating}>
+                <span className={styles.voteAverage}>
+                  {movie.vote_average.toFixed(1)}
+                </span>
+                <span className={styles.voteCount}>
+                  {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
+                </span>
+              </div>
             </div>
           );
         })}

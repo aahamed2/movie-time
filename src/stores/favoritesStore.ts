@@ -12,8 +12,10 @@ const useFavoritesStore = create<TFavoriteStore>()(
       favorites: [],
       toggleFavorite: (movie: TMovie) => {
         set((state) => {
+          // check if the toggled movie is already a favorite.
           const isFavorite = state.favorites.some((fav) => fav.id === movie.id);
           return {
+            // filtering out the movie if it's already a favorite or adding it if it's not.
             favorites: isFavorite
               ? state.favorites.filter((fav) => fav.id !== movie.id)
               : [...state.favorites, movie],
