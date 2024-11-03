@@ -20,14 +20,14 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const isPosterExists = !!movie.poster_path;
 
   const handleFavoriteClick = (e: React.MouseEvent, movie: TMovie) => {
+    e.preventDefault();
     e.stopPropagation();
     toggleFavorite(movie);
   };
 
   return (
-    <div className={styles.movieCard}>
-      {/* Movie poster */}
-      <Link href={`/movies/${movie.id}`}>
+    <Link href={`/movies/${movie.id}`} className={styles.movieCard}>
+      <div className={styles.posterWrapper}>
         <Image
           src={
             isPosterExists
@@ -35,12 +35,11 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
               : fallBackPoster
           }
           alt={movie.title}
-          width={150}
-          height={220}
+          width={300}
+          height={450}
           className={styles.movieImage}
         />
-      </Link>
-      <div className={styles.infoRow}>
+        <div className={styles.overlay} />
         <button
           className={styles.favoriteButton}
           onClick={(e) => handleFavoriteClick(e, movie)}
@@ -52,29 +51,34 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             <AiOutlineHeart />
           )}
         </button>
-        <Link href={`/movies/${movie.id}`} className={styles.movieTitle}>
-          {movie.title}
-        </Link>
-        <span className={styles.releaseDate}>
-          {movie.release_date
-            ? `(${new Date(movie.release_date).getFullYear()})`
-            : 'N/A'}
-        </span>
       </div>
-      <div className={styles.ratingsRow}>
-        <div className={styles.votes}>
-          <span className={styles.voteAverage}>
-            {movie.vote_average.toFixed(1)}
+      <div className={styles.infoWrapper}>
+        <h3 className={styles.movieTitle}>
+          {movie.title}
+          <span className={styles.releaseDate}>
+            {movie.release_date
+              ? ` (${new Date(movie.release_date).getFullYear()})`
+              : ' (N/A)'}
           </span>
-          <span className={styles.voteCount}>
-            {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
+        </h3>
+        <div className={styles.ratingsRow}>
+          <div className={styles.votes}>
+            <span className={styles.voteAverage}>
+              {movie.vote_average.toFixed(1)}
+            </span>
+            <span className={styles.voteCount}>
+              {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
+            </span>
+          </div>
+          <span className={styles.popularity}>
+            Pop:{' '}
+            {movie.popularity
+              ? Math.round(movie.popularity).toLocaleString()
+              : '0'}
           </span>
         </div>
-        <span className={styles.popularity}>
-          Popularity: {movie.popularity ? `(${movie.popularity})` : '(0)'}
-        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 

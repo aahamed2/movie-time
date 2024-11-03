@@ -19,7 +19,7 @@ const Header: React.FC = () => {
       <SearchBar />
       {/* right block */}
       <div className={styles.headerItems}>
-        <Link href="/" className={styles.link}>
+        <Link href="/" className={`${styles.link} ${styles.homeLink}`}>
           Home
         </Link>
         <Link href="/favorites" className={styles.link}>

@@ -31,7 +31,7 @@
     gap: 10px;
     display: flex;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #ffffff;
 
     a {
@@ -44,24 +44,25 @@
         background: #d8c184;
       }
     }
+
+    .homeLink {
+      display: inline;
+    }
   }
 }
 
-@media (max-width: 768px) {
-  .headerWrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px;
-
-    .headerItems {
-      margin-top: 10px;
-      width: 100%;
-      justify-content: flex-end;
+@media (max-width: 992px) {
+  .headerlogo {
+    .headerTexts {
+      display: none !important;
     }
   }
 
-  .searchBar {
-    margin-top: 10px;
-    width: 100%;
+  .headerItems {
+    font-size: 0.8rem !important;
+
+    .homeLink {
+      display: none !important;
+    }
   }
 }

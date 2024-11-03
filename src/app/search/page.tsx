@@ -9,7 +9,7 @@ type TSearchPageProps = {
 };
 
 const SearchPage: React.FC<TSearchPageProps> = async ({ searchParams }) => {
-  const initialQuery = searchParams?.query || '';
+  const initialQuery = (await searchParams?.query) || '';
   let movies = [];
 
   if (initialQuery) {

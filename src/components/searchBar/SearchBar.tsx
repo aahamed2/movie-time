@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { FaSearch } from 'react-icons/fa';
 import styles from './SearchBar.module.scss';
 
 export type TSearchBarProps = {
@@ -37,7 +38,7 @@ const SearchBar: React.FC<TSearchBarProps> = ({ initialQuery = '' }) => {
         className={styles.searchInput}
       />
       <button type="submit" className={styles.searchButton}>
-        Search
+        <FaSearch />
       </button>
     </form>
   );

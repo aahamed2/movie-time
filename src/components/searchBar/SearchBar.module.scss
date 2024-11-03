@@ -1,14 +1,14 @@
 .searchBar {
   display: flex;
-  margin: 10px auto;
-  width: 300px;
-  padding-left: 20px;
+  // margin: 10px auto;
+  width: 700px;
+  padding: 0 20px;
 }
 
 .searchInput {
   flex: 1;
   padding: 8px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   background-color: #333;
   color: white;
   border: 1px solid #555;
@@ -23,4 +23,15 @@
   font-weight: 700;
   cursor: pointer;
   margin-left: 10px;
+  border-radius: 3px;
+}
+
+@media (max-width: 1050px) {
+  .searchBar {
+    width: 500px;
+  }
+
+  .searchButton {
+    padding: 4px 8px;
+  }
 }
