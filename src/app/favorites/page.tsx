@@ -29,7 +29,7 @@ export default function Favorites() {
         <MoviesList movies={favorites} />
       ) : (
         <div className={styles.noFavorites}>
-          No favorite movies found! Browse the site to pick your favorites!
+          No favorite movies found, Browse the site to pick your favorites!
         </div>
       )}
     </div>

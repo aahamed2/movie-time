@@ -6,12 +6,12 @@ import { TMovie } from '../../types/movieTypes';
 import { sortMovies } from '../../utils/movie';
 import styles from './SearchResults.module.scss';
 
-interface SearchResultsProps {
+export type TSearchResultsProps = {
   movies: TMovie[];
   query: string;
-}
+};
 
-export default function SearchResults({ movies, query }: SearchResultsProps) {
+export default function SearchResults({ movies, query }: TSearchResultsProps) {
   const [localMovies, setLocalMovies] = useState<TMovie[]>(movies);
   const [sortOption, setSortOption] = useState('latest');
 
