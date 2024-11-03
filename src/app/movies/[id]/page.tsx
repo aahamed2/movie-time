@@ -9,7 +9,7 @@ import { TGenre, TMovieDetailsType } from '../../../types/movieTypes';
 
 type TMovieDetailsProps = {
   movieDetails: TMovieDetailsType;
-  params: { id: number };
+  params: { id: string };
 };
 
 const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {

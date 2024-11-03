@@ -61,6 +61,7 @@ const SimilarMovies: React.FC<TMoviesListProps> = ({ movies }) => {
             ))}
           </div>
         </div>
+        {/* Embla nav arrows */}
         {canScrollPrev && (
           <button className={styles.emblaPrev} onClick={scrollPrev}>
             <IoIosArrowBack style={{ color: '#fbbf24' }} />

@@ -29,7 +29,7 @@ export async function fetchSearchedMovies(query: string) {
 }
 
 // fetch the movie details page of the relevant movie tile/id
-export async function fetchMovieDetails(movieId: number) {
+export async function fetchMovieDetails(movieId: string) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
   );
@@ -43,7 +43,7 @@ export async function fetchMovieDetails(movieId: number) {
 }
 
 // Fetch similar movies based on the movie ID
-export async function fetchSimilarMovies(movieId: number) {
+export async function fetchSimilarMovies(movieId: string) {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}`
   );

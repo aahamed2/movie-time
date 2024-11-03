@@ -2,13 +2,13 @@ import React from 'react';
 import SearchResults from './SearchResults';
 import { fetchSearchedMovies } from '../../utils/fetch';
 
-type SearchPageProps = {
+type TSearchPageProps = {
   searchParams: {
     query?: string;
   };
 };
 
-const SearchPage: React.FC<SearchPageProps> = async ({ searchParams }) => {
+const SearchPage: React.FC<TSearchPageProps> = async ({ searchParams }) => {
   const initialQuery = searchParams?.query || '';
   let movies = [];
 
