@@ -1,4 +1,4 @@
-const API_KEY = process.env.PUBLIC_MOVIES_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_MOVIES_API_KEY;
 
 // fetch all list of movies
 export async function fetchMovies() {
