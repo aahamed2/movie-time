@@ -3,7 +3,7 @@ import { fetchMovieDetails, fetchSimilarMovies } from '../../../utils/fetch';
 import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
-import SimilarMovies from '../similarMovies/page';
+import SimilarMovies from '../../similarMovies/page';
 
 import { TGenre, TMovieDetailsType } from '../../../types/movieTypes';
 
@@ -18,8 +18,6 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
   const similarMovies = await fetchSimilarMovies(id);
   const isPosterExists = !!movieDetails.poster_path;
   const isBackdropExists = !!movieDetails.backdrop_path;
-
-  console.log('movieDetails', movieDetails);
 
   return (
     <div>

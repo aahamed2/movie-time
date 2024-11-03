@@ -61,12 +61,17 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
             : 'N/A'}
         </span>
       </div>
-      <div className={styles.rating}>
-        <span className={styles.voteAverage}>
-          {movie.vote_average.toFixed(1)}
-        </span>
-        <span className={styles.voteCount}>
-          {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
+      <div className={styles.ratingsRow}>
+        <div className={styles.votes}>
+          <span className={styles.voteAverage}>
+            {movie.vote_average.toFixed(1)}
+          </span>
+          <span className={styles.voteCount}>
+            {movie.vote_count ? `(${movie.vote_count})` : '(0)'}
+          </span>
+        </div>
+        <span className={styles.popularity}>
+          Popularity: {movie.popularity ? `(${movie.popularity})` : '(0)'}
         </span>
       </div>
     </div>
