@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './SearchBar.module.scss';
 
 export type TSearchBarProps = {
@@ -11,6 +11,14 @@ export type TSearchBarProps = {
 const SearchBar: React.FC<TSearchBarProps> = ({ initialQuery = '' }) => {
   const [searchQuery, setSearchQuery] = useState<string>(initialQuery);
   const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Clear the search query if the user is not on the search page
+    if (pathname !== '/search') {
+      setSearchQuery('');
+    }
+  }, [pathname]);
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
