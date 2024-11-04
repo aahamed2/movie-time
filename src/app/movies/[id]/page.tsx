@@ -23,8 +23,6 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
   const isPosterExists = !!movieDetails.poster_path;
   const isBackdropExists = !!movieDetails.backdrop_path;
 
-  console.log('MovieDetailsssss', movieDetails);
-
   return (
     <div>
       <div
