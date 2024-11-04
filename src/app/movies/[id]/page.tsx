@@ -4,7 +4,6 @@ import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
 import SimilarMovies from '../../similarMovies/SimilarMovies';
-
 import {
   TGenre,
   TMovieDetailsType,
@@ -18,8 +17,15 @@ export type TMovieDetailsProps = {
 
 const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
   const { id } = await params;
-  const movieDetails = await fetchMovieDetails(id);
-  const similarMovies = await fetchSimilarMovies(id);
+
+  // caching for one hour
+  const movieDetails = await fetchMovieDetails(id, {
+    next: { revalidate: 3600 },
+  });
+  const similarMovies = await fetchSimilarMovies(id, {
+    next: { revalidate: 3600 },
+  });
+
   const isPosterExists = !!movieDetails.poster_path;
   const isBackdropExists = !!movieDetails.backdrop_path;
 
@@ -64,7 +70,6 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
                   .map((genre: TGenre) => genre.name)
                   .join(', ')}
               </div>
-
               <div>
                 <strong>Languages:</strong>{' '}
                 {movieDetails.spoken_languages
@@ -94,8 +99,8 @@ const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
             </div>
           </div>
         </div>
-        {/* Similar Movies Container */}
       </div>
+      {/* Similar Movies Container */}
       <div>
         <SimilarMovies movies={similarMovies} />
       </div>

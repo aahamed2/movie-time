@@ -29,9 +29,13 @@ export async function fetchSearchedMovies(query: string) {
 }
 
 // fetch the movie details page of the relevant movie tile/id
-export async function fetchMovieDetails(movieId: string) {
+export async function fetchMovieDetails(
+  movieId: string,
+  options?: { next?: { revalidate: number } }
+) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`,
+    options
   );
 
   if (!response.ok) {
@@ -43,9 +47,13 @@ export async function fetchMovieDetails(movieId: string) {
 }
 
 // Fetch similar movies based on the movie ID
-export async function fetchSimilarMovies(movieId: string) {
+export async function fetchSimilarMovies(
+  movieId: string,
+  options?: { next?: { revalidate: number } }
+) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}`,
+    options
   );
 
   if (!response.ok) {
