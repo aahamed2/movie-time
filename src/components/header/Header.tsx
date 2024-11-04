@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <header className={styles.headerWrapper}>
       {/* left block */}
-      <Link href="/" className={styles.headerlogo}>
+      <Link href="/" className={styles.headerLogo}>
         <MdOutlineMovieFilter
           style={{ fontSize: '30px', color: '#fbbf24' }}
           className={styles.headerIcon}

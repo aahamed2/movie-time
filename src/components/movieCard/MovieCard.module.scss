@@ -93,6 +93,10 @@
   flex-direction: column;
   gap: 0.5rem;
   flex: 1;
+
+  @media (max-width: 640px) {
+    padding: 0.5rem;
+  }
 }
 
 .titleContainer {
@@ -129,6 +133,12 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: auto;
+
+  font-size: 0.875rem;
+
+  @media (max-width: 640px) {
+    font-size: 0.75rem;
+  }
 }
 
 .votes {
@@ -139,7 +149,6 @@
 }
 
 .voteAverage {
-  font-size: 0.875rem;
   font-weight: 600;
   color: #fbbf24;
   white-space: nowrap;
@@ -149,36 +158,11 @@
   }
 }
 
-.voteCount {
-  color: #9ca3af;
-  font-size: 0.75rem;
-  white-space: nowrap;
-}
-
+.voteCount,
 .popularity {
   color: #9ca3af;
   font-size: 0.75rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@media (max-width: 640px) {
-  .infoWrapper {
-    padding: 0.5rem;
-  }
-
-  .ratingsRow {
-    font-size: 0.75rem;
-  }
-
-  .favoriteButton {
-    width: 1.75rem;
-    height: 1.75rem;
-
-    svg {
-      width: 1rem;
-      height: 1rem;
-    }
-  }
 }

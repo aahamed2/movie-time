@@ -1,8 +1,11 @@
 .searchBar {
   display: flex;
-  // margin: 10px auto;
   width: 700px;
   padding: 0 20px;
+
+  @media (max-width: 1050px) {
+    width: 500px;
+  }
 }
 
 .searchInput {
@@ -24,14 +27,8 @@
   cursor: pointer;
   margin-left: 10px;
   border-radius: 3px;
-}
 
-@media (max-width: 1050px) {
-  .searchBar {
-    width: 500px;
-  }
-
-  .searchButton {
+  @media (max-width: 1050px) {
     padding: 4px 8px;
     margin-left: 0;
   }

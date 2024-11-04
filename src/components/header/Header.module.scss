@@ -6,7 +6,7 @@
   color: white;
   padding: 10px;
 
-  .headerlogo {
+  .headerLogo {
     display: flex;
     align-items: center;
 
@@ -28,8 +28,8 @@
   }
 
   .headerItems {
-    gap: 10px;
     display: flex;
+    gap: 10px;
     font-weight: 600;
     font-size: 1rem;
     color: #ffffff;
@@ -52,15 +52,15 @@
 }
 
 @media (max-width: 992px) {
-  .headerlogo {
-    //remove logo text when its mobile + tablet
+  .headerLogo {
+    // Remove logo text on mobile and tablet
     .headerTexts {
       display: none !important;
     }
   }
 
   .headerItems {
-    //remove home button when its mobile + tablet
+    // Remove home button on mobile and tablet
     .homeLink {
       display: none !important;
     }
