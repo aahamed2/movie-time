@@ -29,20 +29,20 @@ To run the application locally, follow these steps:
 - Zustand: For global state management, particularly for managing favorite movies.
 - Embla Carousel: For implementing a responsive carousel feature.
 - TypeScript: For static typing, improving code quality and maintainability.
+- Next.js Revalidation: Implemented Next.js revalidation to fetch updated data every hour, ensuring that users see the latest information without needing a full page reload.
 
-**Design Decisions**
+**Features**
 - Search on Home Page: The search bar is integrated on the home page for quick access. Upon entering a query, users are redirected to a results page using `router.push`.
-- Server and Client Components: Utilized Next.js 15's optimized components to improve load times, using server-side rendering for data fetching and client components for interactivity.
 - Dynamic Routing: Each movie detail page has a unique URL for easy bookmarking and sharing.
+- Detailed Movie Page: Each movie has a dedicated page that provides in-depth information, including a synopsis, cast details, and user ratings, enhancing the overall user experience
+- Sorting Functionality: Users can sort movies on the search results page by release date (latest to oldest or vice versa), ensuring a responsive experience.
 
 **Challenges and Solutions**
 - Hydration Errors: Resolved dynamic data inconsistencies between server and client components by using conditional rendering and ensuring consistent data availability.
 - Responsive Design: Achieved a visually appealing layout using CSS Modules and SCSS for flexible component styling.
 - Favorite Movies Management: Leveraged Zustand for lightweight state management of favorite movies across components.
+- Server and Client Components: Utilized Next.js 15's optimized components to improve load times, using server-side rendering for data fetching and client components for interactivity.
 
-**Additional Features**
-- Sorting Functionality: Users can sort movies on the search results page by release date (latest to oldest or vice versa), ensuring a responsive experience.
-- Fallback Images: Display fallback images for movies without available posters to maintain layout consistency.
 
-**Future Enhancements**
-- Pagination: Implementing pagination for large datasets on the search results page for better user experience.
+
+
