@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import styles from '../similarMovies/SimilarMovies.module.scss';
 import { TMoviesListProps, TMovie } from '../../types/movieTypes';
-import MovieCard from '../../components/movieCard/MovieCard';
+import MovieCard from '../movieCard/MovieCard';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 const SimilarMovies: React.FC<TMoviesListProps> = ({ movies }) => {
