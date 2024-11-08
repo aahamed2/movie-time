@@ -1,9 +1,9 @@
 import React from 'react';
+import SimilarMovies from '../../../components/similarMovies/SimilarMovies';
 import { fetchMovieDetails, fetchSimilarMovies } from '../../../utils/fetch';
 import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
-import SimilarMovies from '../../../components/similarMovies/SimilarMovies';
 import { TGenre, TLanguage } from '../../../types/movieTypes';
 
 type TParams = Promise<{ id: string }>;
@@ -24,7 +24,7 @@ const MovieDetails = async (props: { params: TParams }) => {
   const isBackdropExists = !!movieDetails.backdrop_path;
 
   return (
-    <div>
+    <>
       <div
         className={styles.movieDetails}
         style={{
@@ -96,9 +96,11 @@ const MovieDetails = async (props: { params: TParams }) => {
       </div>
       {/* Similar Movies Container */}
       <div>
-        <SimilarMovies movies={similarMovies} />
+        {similarMovies.length > 0 ? (
+          <SimilarMovies movies={similarMovies} />
+        ) : null}
       </div>
-    </div>
+    </>
   );
 };
 
