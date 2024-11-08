@@ -16,7 +16,12 @@ To run the application locally, follow these steps:
    ```bash
    bun install
    ```
-3. **Run the application:**
+3. **Set up your API key:**
+- Create a `.env.local` file in the root directory of the project.
+- Add your API key to the .env.local file in the following format: `NEXT_PUBLIC_API_KEY=your_api_key_here`
+- Replace `your_api_key_here` with your actual API key. If you don’t have an API key, you can sign up for one here - [The Movie Database](https://www.themoviedb.org/)
+
+4. **Run the application:**
    ```bash
    bun run dev
    ```
