@@ -8,11 +8,11 @@ import fallBackPoster from '../../../public/logo.jpg';
 import { TMovie } from '../../types/movieTypes';
 import useFavoritesStore from '../../stores/favoritesStore';
 
-type MovieCardProps = {
+type TMovieCardProps = {
   movie: TMovie;
 };
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+const MovieCard = ({ movie }: TMovieCardProps): JSX.Element => {
   const favorites = useFavoritesStore((state) => state.favorites);
   const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
 
@@ -64,7 +64,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
         <div className={styles.ratingsRow}>
           <div className={styles.votes}>
             <span className={styles.voteAverage}>
-              {movie.vote_average.toFixed(1)}
+              {movie?.vote_average?.toFixed(1)}
             </span>
             <span className={styles.voteCount}>
               {movie.vote_count ? `(${movie.vote_count})` : '(0)'}

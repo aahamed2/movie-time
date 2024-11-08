@@ -3,19 +3,13 @@ import { fetchMovieDetails, fetchSimilarMovies } from '../../../utils/fetch';
 import styles from '../MovieDetails.module.scss';
 import Image from 'next/image';
 import fallBackPoster from '../../../../public/logo.jpg';
-import SimilarMovies from '../../similarMovies/SimilarMovies';
-import {
-  TGenre,
-  TMovieDetailsType,
-  TLanguage,
-} from '../../../types/movieTypes';
+import SimilarMovies from '../../../components/similarMovies/SimilarMovies';
+import { TGenre, TLanguage } from '../../../types/movieTypes';
 
-export type TMovieDetailsProps = {
-  movieDetails: TMovieDetailsType;
-  params: { id: string };
-};
+type TParams = Promise<{ id: string }>;
 
-const MovieDetails: React.FC<TMovieDetailsProps> = async ({ params }) => {
+const MovieDetails = async (props: { params: TParams }) => {
+  const params = await props.params;
   const { id } = await params;
 
   // caching for one hour
